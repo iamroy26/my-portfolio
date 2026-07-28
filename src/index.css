@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-bg: #030304;
+  --color-accent: #a78bfa;
+  --color-accent-cyan: #22d3ee;
+}
+
+
+
+.hero-avatar {
+  position: relative;
+}
+
+.chip {
+  animation: floatChip 5s ease-in-out infinite;
+}
+
+.chip-1 {
+  left: -10%;
+  top: 12%;
+}
+
+.chip-2 {
+  right: -12%;
+  top: 38%;
+}
+
+.chip-3 {
+  left: 50%;
+  bottom: -6%;
+  transform: translateX(-50%);
+}
+
+@keyframes floatChip {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-avatar {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .chip {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+
+  .chip-1 {
+    left: -2%;
+    top: -5%;
+  }
+
+  .chip-2 {
+    right: -2%;
+    top: 35%;
+  }
+
+  .chip-3 {
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-avatar {
+    width: 230px !important;
+    height: 230px !important;
+  }
+
+  .chip {
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .chip-1 {
+    left: 2%;
+    top: -10%;
+  }
+
+  .chip-2 {
+    right: 2%;
+    top: 30%;
+  }
+
+  .chip-3 {
+    left: 50%;
+    bottom: -10%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-avatar {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .chip {
+    font-size: 9px;
+    padding: 5px 8px;
+  }
+
+  .chip-1 {
+    left: 5%;
+    top: -12%;
+  }
+
+  .chip-2 {
+    right: 5%;
+    top: 28%;
+  }
+
+  .chip-3 {
+    bottom: -12%;
+  }
+}
