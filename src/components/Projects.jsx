@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import Icon from "./Icon";
@@ -9,12 +9,29 @@ import ProjectLogo from "./ProjectLogo";
 
 const FILTERS = ["All", "React", "JavaScript", "CSS", "API"];
 
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= breakpoint : false
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    setIsMobile(mq.matches);
+    return () => mq.removeEventListener("change", handler);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 export default function Projects({ dark }) {
   const { border, muted, accent, accent2, surface, text } = useTheme(dark);
 
   const [filter, setFilter] = useState("All");
   const [search, setSearch] = useState("");
   const [paused, setPaused] = useState(false);
+  const isMobile = useIsMobile();
 
   const filtered = DATA.projects.filter((p) => {
     const matchFilter =
@@ -36,6 +53,10 @@ export default function Projects({ dark }) {
     return matchFilter && matchSearch;
   });
 
+  // Only duplicate the list for the desktop marquee animation.
+  // On mobile the track is static (no scroll animation), so duplicating
+  // would just show every project card twice.
+  const renderList = isMobile ? filtered : [...filtered, ...filtered];
 
   return (
     <section
@@ -147,9 +168,9 @@ export default function Projects({ dark }) {
               paused ? "paused" : ""
             }`}
           >
-          {[...filtered, ...filtered].map((p,i)=>(
+          {renderList.map((p,i)=>(
             <Reveal
-              key={p.title}
+              key={`${p.title}-${i}`}
               delay={i*0.08}
             >
             <div
