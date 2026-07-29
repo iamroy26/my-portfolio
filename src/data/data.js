@@ -166,6 +166,6 @@ export const DATA = {
   stats: [
     { value: "11+", label: "Projects Completed" },
     { value: "9", label: "Live Deployments" },
-    { value: "1+", label: "Year Coding" },
+    { value: "2+", label: "Year Coding" },
   ],
 };
