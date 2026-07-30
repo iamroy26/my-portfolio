@@ -8,19 +8,19 @@ const SERVICES = [
     title: "Wash & Fold",
     desc: "Everyday laundry washed, dried, and neatly folded — ready for your closet.",
     price: "From ₵25/load",
-    image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=700&q=80",
+    image: "/laundry.jpg",
   },
   {
     title: "Dry Cleaning",
     desc: "Professional care for suits, dresses, and delicate fabrics that need extra attention.",
     price: "From ₵40/item",
-    image: "https://images.unsplash.com/photo-1610557892470-55d9e80d0ae6?w=700&q=80",
+    image: "/dry_cleaning.jpg",
   },
   {
     title: "Ironing & Press",
     desc: "Crisp, wrinkle-free shirts and trousers — look sharp without the hassle.",
     price: "From ₵15/item",
-    image: "https://images.unsplash.com/photo-1620799140408-8c4fd4f302e7?w=700&q=80",
+    image: "/ironing_press.jpg",
   },
   {
     title: "Pickup & Delivery",

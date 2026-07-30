@@ -164,8 +164,9 @@ export const DATA = {
   ],
   stack: ["React", "JavaScript", "Tailwind CSS", "Figma", "Git", "Vercel"],
   stats: [
-    { value: "11+", label: "Projects Completed" },
-    { value: "9", label: "Live Deployments" },
+    { value: "7+", label: "Projects" },
+    { value: "9+", label: "Technologies" },
     { value: "2+", label: "Year Coding" },
+    { value: "100%", label: "Responsive Design" }
   ],
 };
