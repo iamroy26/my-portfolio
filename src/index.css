@@ -4,9 +4,9 @@
   --font-display: "Outfit", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --color-bg: #030304;
-  --color-accent: #a78bfa;
-  --color-accent-cyan: #22d3ee;
+  --color-bg: #010e05;          /* was #030304 — nudged to the same deep green-black as GlobalStyles */
+  --color-accent: #d9280d;      /* was #a78bfa (violet) — now the red-orange primary */
+  --color-accent-cyan: #42b3f0; /* was #22d3ee (cyan) — now the blue accent, same role: cool counterpoint */
 }
 
 

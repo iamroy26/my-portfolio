@@ -1,12 +1,14 @@
 export default function GlobalStyles({ dark }) {
-  const accent = "#3b82f6";   
-  const accent2 = "#6366f1";  
-  const accent3 = "#4f46e5";   
-  const bg = dark ? "#030304" : "#fafafa";
-  const surface = dark ? "#0a0a0d" : "#ffffff";
-  const text = dark ? "#fafafa" : "#09090b";
-  const muted = dark ? "#a1a1aa" : "#71717a";
-  const border = dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
+  // User-supplied palette: red-orange primary, deep red secondary, blue accent
+  const accent = dark ? "#d9280d" : "#f24126";   // primary — CTA / links
+  const accent2 = dark ? "#ee7c7c" : "#831111";  // secondary — labels, borders
+  const accent3 = dark ? "#42b3f0" : "#0f80bd";  // accent — used sparingly, tertiary
+
+  const bg = dark ? "#010e05" : "#f1fef5";       // deep green-black / pale mint
+  const surface = dark ? "#04170a" : "#ffffff";  // card surface, lifted off bg
+  const text = dark ? "#e7feee" : "#011808";     // pale mint / deep green-black
+  const muted = dark ? "#9bcaa8" : "#4d6b53";    // muted green, same family as text
+  const border = dark ? "rgba(231,254,238,0.08)" : "rgba(1,24,8,0.08)";
 
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600;700;800&display=swap');
@@ -43,7 +45,7 @@ export default function GlobalStyles({ dark }) {
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, ${accent}90, ${accent2}90);
+      background: ${accent};
       border-radius: 99px;
     }
 
@@ -58,9 +60,9 @@ export default function GlobalStyles({ dark }) {
       font-feature-settings: 'liga' 0;
     }
 
-    /* Gradients */
+    /* Gradients — stays in the red family; blue is reserved as a standalone accent, not blended in */
     .grad {
-      background: linear-gradient(135deg, #93c5fd 0%, ${accent} 40%, ${accent2} 75%, ${accent3} 100%);
+      background: linear-gradient(135deg, ${accent} 0%, ${accent2} 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -69,7 +71,7 @@ export default function GlobalStyles({ dark }) {
     .grad-border {
       background:
         linear-gradient(${surface}, ${surface}) padding-box,
-        linear-gradient(135deg, ${accent}70, ${accent2}50, ${accent3}40) border-box;
+        linear-gradient(135deg, ${accent}50, ${accent2}35) border-box;
       border: 1px solid transparent;
     }
 
@@ -84,28 +86,24 @@ export default function GlobalStyles({ dark }) {
 
     /* Surfaces */
     .glass {
-      background: ${dark ? "rgba(10,10,13,0.65)" : "rgba(255,255,255,0.72)"};
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: ${dark ? "rgba(28,24,21,0.7)" : "rgba(255,253,249,0.75)"};
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
 
     .card-hover {
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  box-shadow 0.35s ease,
-                  border-color 0.35s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .card-hover:hover {
-      transform: translateY(-6px);
-      box-shadow:
-        0 0 0 1px ${accent}25,
-        0 24px 48px -12px ${accent}18,
-        0 0 80px -20px ${accent2}15;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.18);
+      border-color: ${accent}40;
     }
     .card-hover:hover img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
-    /* Buttons */
+    /* Buttons — flat fill instead of a moving gradient + neon shadow */
     .btn-primary {
       padding: 12px 28px;
       border-radius: 12px;
@@ -115,15 +113,14 @@ export default function GlobalStyles({ dark }) {
       font-size: 15px;
       font-weight: 600;
       color: #fff;
-      background: linear-gradient(135deg, #2563eb, #4f46e5, #4338ca);
-      background-size: 200% 200%;
-      box-shadow: 0 4px 24px ${accent}45, inset 0 1px 0 rgba(255,255,255,0.15);
-      transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      background: ${accent};
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
     .btn-primary:hover {
-      background-position: 100% 100%;
+      background: #9a4530;
       transform: translateY(-1px);
-      box-shadow: 0 8px 32px ${accent}55, 0 0 40px ${accent2}25, inset 0 1px 0 rgba(255,255,255,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.16);
     }
     .btn-primary:active { transform: translateY(0); }
 
@@ -152,7 +149,7 @@ export default function GlobalStyles({ dark }) {
     }
     input:focus, textarea:focus {
       border-color: ${accent} !important;
-      box-shadow: 0 0 0 3px ${accent}20, 0 0 24px ${accent2}10 !important;
+      box-shadow: 0 0 0 3px ${accent}20 !important;
     }
 
     /* Layout */
@@ -261,8 +258,8 @@ export default function GlobalStyles({ dark }) {
       50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
     }
     @keyframes pulse-glow {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.05); }
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.03); }
     }
     @keyframes shimmer {
       0% { background-position: 200% center; }
@@ -276,9 +273,10 @@ export default function GlobalStyles({ dark }) {
     .hero-glow {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
       animation: pulse-glow 8s ease-in-out infinite;
+      background: ${accent3}30;
     }
   `;
 
